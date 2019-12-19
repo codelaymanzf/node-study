@@ -1,0 +1,30 @@
+{
+  "name": "node-study",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangfeng0719/node-study.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangfeng0719/node-study/issues"
+  },
+  "homepage": "https://github.com/zhangfeng0719/node-study#readme",
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-router": "^7.4.0"
+  },
+  "devDependencies": {
+    "chalk": "^3.0.0",
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^0.20.0"
+  }
+}

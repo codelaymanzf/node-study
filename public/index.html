@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Test Api Cache</title>
+  </head>
+
+  <body>
+    <h1>测试接口缓存</h1>
+    <ul id="api-list"></ul>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      (async () => {
+        let count = 0;
+        let timer = null;
+
+        timer = setInterval(async () => {
+          let id = Math.ceil(Math.random() * 10);
+          // 发送请求
+          const res = await axios.get(`/api/data/${id}`);
+
+          console.log("data", res.data);
+          let liEle = document.createElement("li");
+          liEle.innerText = res.data;
+          document.getElementById("api-list").appendChild(liEle);
+
+          count++;
+
+          if (count === 20) {
+            clearInterval(timer);
+          }
+          console.log(count);
+        }, 1000);
+      })();
+    </script>
+  </body>
+</html>
