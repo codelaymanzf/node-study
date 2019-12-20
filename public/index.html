@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Test Api Cache</title>
+    <title>Test API Cache</title>
   </head>
 
   <body>
-    <h1>测试接口缓存</h1>
+    <h1>Test API Cache</h1>
     <ul id="api-list"></ul>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
@@ -22,6 +22,7 @@
           const res = await axios.get(`/api/data/${id}`);
 
           console.log("data", res.data);
+
           let liEle = document.createElement("li");
           liEle.innerText = res.data;
           document.getElementById("api-list").appendChild(liEle);
@@ -31,6 +32,7 @@
           if (count === 20) {
             clearInterval(timer);
           }
+
           console.log(count);
         }, 1000);
       })();

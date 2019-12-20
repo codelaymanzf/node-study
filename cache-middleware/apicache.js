@@ -2,8 +2,8 @@ const Cache = require("./MemoryCache");
 let cache = new Cache();
 
 class ApiCache {
-  constructor(refreshTime) {
-    this.refreshTime = refreshTime;
+  constructor() {
+    this.timer = null;
     this.cacheRefresh();
   }
 
@@ -11,6 +11,7 @@ class ApiCache {
     return async function(ctx, next) {
       let currentPath = ctx.url;
       let responseData = `mock ${currentPath} api's response data`;
+
       if (!cache.has(currentPath)) {
         cache.set(currentPath, responseData);
         ctx.body = responseData;
@@ -23,10 +24,23 @@ class ApiCache {
   }
 
   cacheRefresh() {
-    setTimeout(() => {
+    let curTime = new Date().getTime();
+    let secondDayZero = new Date().setHours(24, 0, 0, 0);
+    let countDown = secondDayZero - curTime;
+
+    console.log("countDown", countDown);
+
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
+
+    this.timer = setTimeout(() => {
       cache.clear();
-      console.log("cache clear");
-    }, this.refreshTime);
+
+      console.log("========== clear cache ========");
+
+      this.cacheRefresh();
+    }, countDown);
   }
 }
 

@@ -25,6 +25,7 @@
   "devDependencies": {
     "chalk": "^3.0.0",
     "express": "^4.17.1",
-    "http-proxy-middleware": "^0.20.0"
+    "http-proxy-middleware": "^0.20.0",
+    "open": "^7.0.0"
   }
 }
